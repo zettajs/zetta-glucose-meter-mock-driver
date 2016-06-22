@@ -1,6 +1,6 @@
 {
   "name": "zetta-glucose-meter-mock-driver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Mock stateful glucose meter for Zetta that generates a sine wave.",
   "main": "index.js",
   "scripts": {
