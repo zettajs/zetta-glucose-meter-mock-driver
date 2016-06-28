@@ -2,6 +2,8 @@ var Device = require('zetta-device');
 var util = require('util');
 var extend = require('node.extend');
 
+var VERIO_FLEX_IMG = 'http://www.promedsupply.biz/wp-content/uploads/2015/11/OneTouch-Verio-FLEX-Glucose-Monitoring-System-1-0.jpg';
+
 var TIMEOUT = 3000;
 function degToRad(x) {
   return x * ( Math.PI / 180 );
@@ -17,6 +19,19 @@ var GlucoseMeter = module.exports = function(opts) {
   this.currentVersion = 1.0;
   this._timeOut = null;
   this._counter = 0;
+  
+  this.style = extend(true, this.style, {properties: {
+    stateImage: {
+      url: VERIO_FLEX_IMG,
+      tintMode: 'original'
+    },
+    concentration: {
+      display: 'billboard',
+      significantDigits: 1,
+      symbol: 'mg/dl'
+    }
+  }});
+  
 };
 util.inherits(GlucoseMeter, Device);
 
