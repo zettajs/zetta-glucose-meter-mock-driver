@@ -89,11 +89,15 @@ GlucoseMeter.prototype.makeNotReady = function(cb) {
 GlucoseMeter.prototype._startMockData = function(cb) {
   var self = this;
   this._timeOut = setInterval(function() {
-    self.concentration = 292 * (Math.sin(degToRad(self._counter)) + 1.0) + 19;
-    if (self.concentration < 20) {
-      self.concentration = 'LO';
-    } else if (self.concentration > 600) {
-      self.concentration = 'HI';
+    var concentration = 292 * (Math.sin(degToRad(self._counter)) + 1.0) + 19;
+    if (concentration < 20) {
+      self.concentration = 20;
+      // self.concentration = 'LO';
+    } else if (concentration > 600) {
+      self.concentration = 600;
+      // self.concentration = 'HI';
+    } else {
+      self.concentration = concentration;
     }
     self._counter += self._increment;
   }, 1000);
